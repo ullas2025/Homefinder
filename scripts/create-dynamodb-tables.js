@@ -1,82 +1,49 @@
-const {
-  DynamoDBClient,
-  CreateTableCommand,
-  DescribeTableCommand,
-} = require("@aws-sdk/client-dynamodb");
-const env = require("../src/config/env");
+require("dotenv").config();
+const { DynamoDBClient, CreateTableCommand, DescribeTableCommand } = require("@aws-sdk/client-dynamodb");
 
-const client = new DynamoDBClient({ region: env.awsRegion });
+const client = new DynamoDBClient({
+  region: process.env.AWS_REGION || "ap-south-1",
+});
 
-async function tableExists(tableName) {
+const tables = [
+  {
+    TableName: process.env.LISTINGS_TABLE || "Listings",
+    KeySchema: [{ AttributeName: "listingId", KeyType: "HASH" }],
+    AttributeDefinitions: [{ AttributeName: "listingId", AttributeType: "S" }],
+    BillingMode: "PAY_PER_REQUEST", // no capacity planning needed
+  },
+  {
+    TableName: process.env.INQUIRIES_TABLE || "Inquiries",
+    KeySchema: [{ AttributeName: "inquiryId", KeyType: "HASH" }],
+    AttributeDefinitions: [{ AttributeName: "inquiryId", AttributeType: "S" }],
+    BillingMode: "PAY_PER_REQUEST",
+  },
+];
+
+async function tableExists(name) {
   try {
-    await client.send(new DescribeTableCommand({ TableName: tableName }));
+    await client.send(new DescribeTableCommand({ TableName: name }));
     return true;
-  } catch (error) {
-    if (error.name === "ResourceNotFoundException") {
-      return false;
+  } catch (e) {
+    if (e.name === "ResourceNotFoundException") return false;
+    throw e;
+  }
+}
+
+async function createTables() {
+  for (const table of tables) {
+    const exists = await tableExists(table.TableName);
+    if (exists) {
+      console.log(`✓ Table already exists: ${table.TableName}`);
+    } else {
+      await client.send(new CreateTableCommand(table));
+      console.log(`✓ Created table: ${table.TableName}`);
     }
-    throw error;
   }
+  console.log("\nDone. Your DynamoDB tables are ready.");
 }
 
-async function createListingsTable() {
-  const exists = await tableExists(env.listingsTable);
-  if (exists) {
-    console.log(`Skipping ${env.listingsTable}: already exists`);
-    return;
-  }
-
-  await client.send(
-    new CreateTableCommand({
-      TableName: env.listingsTable,
-      BillingMode: "PAY_PER_REQUEST",
-      AttributeDefinitions: [{ AttributeName: "id", AttributeType: "S" }],
-      KeySchema: [{ AttributeName: "id", KeyType: "HASH" }],
-    })
-  );
-
-  console.log(`Created table ${env.listingsTable}`);
-}
-
-async function createInquiriesTable() {
-  const exists = await tableExists(env.inquiriesTable);
-  if (exists) {
-    console.log(`Skipping ${env.inquiriesTable}: already exists`);
-    return;
-  }
-
-  await client.send(
-    new CreateTableCommand({
-      TableName: env.inquiriesTable,
-      BillingMode: "PAY_PER_REQUEST",
-      AttributeDefinitions: [
-        { AttributeName: "id", AttributeType: "S" },
-        { AttributeName: "listingId", AttributeType: "S" },
-        { AttributeName: "createdAt", AttributeType: "S" },
-      ],
-      KeySchema: [{ AttributeName: "id", KeyType: "HASH" }],
-      GlobalSecondaryIndexes: [
-        {
-          IndexName: "listingId-createdAt-index",
-          KeySchema: [
-            { AttributeName: "listingId", KeyType: "HASH" },
-            { AttributeName: "createdAt", KeyType: "RANGE" },
-          ],
-          Projection: { ProjectionType: "ALL" },
-        },
-      ],
-    })
-  );
-
-  console.log(`Created table ${env.inquiriesTable}`);
-}
-
-async function main() {
-  await createListingsTable();
-  await createInquiriesTable();
-}
-
-main().catch((error) => {
-  console.error(error);
+createTables().catch((err) => {
+  console.error("Failed to create tables:", err.message);
   process.exit(1);
 });
