@@ -766,7 +766,7 @@ nav{
               <div class="photo-zone-text">
                 <strong>Drag & drop photos here, or click to select files</strong>
                 Supports JPG, PNG, WEBP â€” multiple photos allowed<br>
-                <span style="font-size:0.75rem;color:var(--stone);">Pipeline: Upload â†’ S3 â†’ Lambda thumbnail â†’ RDS key saved</span>
+                <span style="font-size:0.75rem;color:var(--stone);">Photos are preview-only for now and are not persisted until file storage is connected.</span>
               </div>
             </div>
 
@@ -1347,6 +1347,8 @@ async function submitListing() {
   if (!price || Number.isNaN(price)) { showToast('⚠️', 'Please enter a valid price'); return; }
   if (!location) { showToast('⚠️', 'Please enter a location'); return; }
 
+  const attachedPhotos = [...agentPhotos];
+
   const newProp = {
     title,
     type,
@@ -1359,7 +1361,7 @@ async function submitListing() {
     agent: 'Priya Sharma',
     agentInit: 'PS',
     desc: desc || 'No description provided.',
-    photos: [...agentPhotos],
+    photos: [],
   };
 
   try {
@@ -1369,7 +1371,11 @@ async function submitListing() {
     });
     properties.unshift(normalizeListing(payload.data));
     resetForm();
-    showToast('✅', 'Listing published! Visible to buyers now.');
+    if (attachedPhotos.length > 0) {
+      showToast('ℹ️', 'Listing saved. Photo previews are local only until file storage is connected.');
+    } else {
+      showToast('✅', 'Listing published! Visible to buyers now.');
+    }
     showAgentTab('dash');
     filterProps();
   } catch (error) {
