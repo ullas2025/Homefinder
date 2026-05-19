@@ -2,11 +2,11 @@
   "name": "homefinder-backend",
   "version": "1.0.0",
   "description": "Simple Node.js backend for HomeFinder with DynamoDB support",
-  "main": "src/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch src/server.js",
-    "check": "node --check src/server.js",
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js",
     "create-tables": "node scripts/create-dynamodb-tables.js"
   },
   "keywords": [

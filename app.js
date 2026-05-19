@@ -1,15 +1,15 @@
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const env = require("./config/env");
-const healthRoutes = require("./routes/health-routes");
-const listingsRoutes = require("./routes/listings-routes");
-const inquiriesRoutes = require("./routes/inquiries-routes");
-const notFound = require("./middleware/not-found");
-const errorHandler = require("./middleware/error-handler");
+const env = require("./src/config/env");
+const healthRoutes = require("./src/routes/health-routes");
+const listingsRoutes = require("./src/routes/listings-routes");
+const inquiriesRoutes = require("./src/routes/inquiries-routes");
+const notFound = require("./src/middleware/not-found");
+const errorHandler = require("./src/middleware/error-handler");
 
 const app = express();
-const rootDir = path.resolve(__dirname, "..");
+const rootDir = __dirname;
 
 app.use(
   cors({

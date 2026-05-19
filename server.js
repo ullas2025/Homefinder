@@ -1,5 +1,5 @@
 const app = require("./app");
-const { port } = require("./config/env");
+const { port } = require("./src/config/env");
 
 app.listen(port, () => {
   console.log(`HomeFinder API listening on port ${port}`);

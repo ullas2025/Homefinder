@@ -89,7 +89,7 @@ For production, use a process manager such as PM2:
 
 ```bash
 sudo npm install -g pm2
-pm2 start src/server.js --name homefinder-api
+pm2 start server.js --name homefinder-api
 pm2 save
 pm2 startup
 ```
