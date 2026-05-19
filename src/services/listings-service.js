@@ -3,47 +3,68 @@ const { v4: uuidv4 } = require("uuid");
 const db = require("../config/dynamodb");
 const { listingsTable } = require("../config/env");
 
-/**
- * Fetch all listings from DynamoDB
- */
+function normalizeListingInput(body) {
+  return {
+    title: String(body.title || "").trim(),
+    type: String(body.type || "Apartment").trim(),
+    price: Number(body.price),
+    location: String(body.location || "").trim(),
+    beds: Number(body.beds || 0),
+    baths: Number(body.baths || 0),
+    area: Number(body.area || 0),
+    status: String(body.status || "active").trim(),
+    agent: String(body.agent || "").trim(),
+    agentInit: String(body.agentInit || "").trim(),
+    desc: String(body.desc || "").trim(),
+    photos: Array.isArray(body.photos) ? body.photos.filter(Boolean) : [],
+  };
+}
+
+function validateListingInput(input) {
+  const requiredFields = ["title", "location", "agent"];
+  const missing = requiredFields.filter((field) => !input[field]);
+
+  if (missing.length) {
+    const error = new Error(`Missing required listing fields: ${missing.join(", ")}`);
+    error.statusCode = 400;
+    throw error;
+  }
+
+  if (Number.isNaN(input.price) || input.price <= 0) {
+    const error = new Error("Listing price must be a positive number");
+    error.statusCode = 400;
+    throw error;
+  }
+}
+
 async function listListings() {
   const { Items } = await db.send(
     new ScanCommand({ TableName: listingsTable })
   );
-  return Items || [];
+  return (Items || []).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
 }
 
-/**
- * Fetch a single listing by its ID
- */
 async function getListingById(id) {
   const { Item } = await db.send(
     new GetCommand({
       TableName: listingsTable,
-      Key: { listingId: id },
+      Key: { id },
     })
   );
   return Item || null;
 }
 
-/**
- * Create a new listing
- * Expected body fields: title, description, price, location, type, bedrooms, bathrooms
- */
 async function createListing(body) {
+  const normalized = normalizeListingInput(body);
+  validateListingInput(normalized);
+
+  const now = new Date().toISOString();
   const item = {
-    listingId: uuidv4(),
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    title: body.title,
-    description: body.description || "",
-    price: body.price,
-    location: body.location || "",
-    type: body.type || "sale",         // "sale" or "rent"
-    bedrooms: body.bedrooms || 0,
-    bathrooms: body.bathrooms || 0,
-    imageUrl: body.imageUrl || "",
-    status: "active",
+    id: uuidv4(),
+    ...normalized,
+    views: Number(body.views || 0),
+    createdAt: now,
+    updatedAt: now,
   };
 
   await db.send(
@@ -53,9 +74,6 @@ async function createListing(body) {
   return item;
 }
 
-/**
- * Delete a listing by ID — returns the deleted item or null if not found
- */
 async function deleteListing(id) {
   const existing = await getListingById(id);
   if (!existing) return null;
@@ -63,7 +81,7 @@ async function deleteListing(id) {
   await db.send(
     new DeleteCommand({
       TableName: listingsTable,
-      Key: { listingId: id },
+      Key: { id },
     })
   );
 
