@@ -1,0 +1,76 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: Validate Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run syntax check
+        run: npm run check
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy project files to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: ${{ secrets.EC2_PORT || 22 }}
+          source: "."
+          target: "/home/${{ secrets.EC2_USERNAME }}/homefinder"
+          strip_components: 0
+          overwrite: true
+
+      - name: Install dependencies and restart app
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: ${{ secrets.EC2_PORT || 22 }}
+          script: |
+            set -e
+            cd /home/${{ secrets.EC2_USERNAME }}/homefinder
+            npm install
+            if [ ! -f .env ]; then
+              cp .env.example .env
+            fi
+            if ! command -v pm2 >/dev/null 2>&1; then
+              sudo npm install -g pm2
+            fi
+            npm run create-tables
+            pm2 describe homefinder-api >/dev/null 2>&1 \
+              && pm2 restart homefinder-api \
+              || pm2 start src/server.js --name homefinder-api
+            pm2 save
