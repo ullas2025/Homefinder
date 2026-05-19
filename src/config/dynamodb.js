@@ -1,15 +1,14 @@
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient } = require("@aws-sdk/lib-dynamodb");
-const { awsRegion } = require("./env");
 
 const client = new DynamoDBClient({
-  region: awsRegion,
+  region: process.env.AWS_REGION || "ap-south-1",
 });
 
-const documentClient = DynamoDBDocumentClient.from(client, {
+const db = DynamoDBDocumentClient.from(client, {
   marshallOptions: {
-    removeUndefinedValues: true,
+    removeUndefinedValues: true, // strips undefined fields automatically
   },
 });
 
-module.exports = documentClient;
+module.exports = db;

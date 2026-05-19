@@ -1,66 +1,44 @@
-const { PutCommand, QueryCommand } = require("@aws-sdk/lib-dynamodb");
+const { PutCommand, QueryCommand, ScanCommand } = require("@aws-sdk/lib-dynamodb");
 const { v4: uuidv4 } = require("uuid");
 const db = require("../config/dynamodb");
 const { inquiriesTable } = require("../config/env");
 
-function normalizeInquiryInput(payload) {
-  return {
-    listingId: String(payload.listingId || "").trim(),
-    name: String(payload.name || "").trim(),
-    email: String(payload.email || "").trim().toLowerCase(),
-    phone: String(payload.phone || "").trim(),
-    message: String(payload.message || "").trim(),
-  };
-}
-
-function validateInquiryInput(input) {
-  const requiredFields = ["listingId", "name", "email", "message"];
-  const missing = requiredFields.filter((field) => !input[field]);
-
-  if (missing.length) {
-    const error = new Error(`Missing required inquiry fields: ${missing.join(", ")}`);
-    error.statusCode = 400;
-    throw error;
-  }
-}
-
-async function createInquiry(payload) {
-  const normalized = normalizeInquiryInput(payload);
-  validateInquiryInput(normalized);
-
+/**
+ * Create a new inquiry for a listing
+ * Expected body fields: listingId, name, email, phone, message
+ */
+async function createInquiry(body) {
   const item = {
-    id: uuidv4(),
-    ...normalized,
+    inquiryId: uuidv4(),
+    listingId: body.listingId,
     createdAt: new Date().toISOString(),
+    name: body.name,
+    email: body.email,
+    phone: body.phone || "",
+    message: body.message || "",
+    status: "new",
   };
 
   await db.send(
-    new PutCommand({
-      TableName: inquiriesTable,
-      Item: item,
-    })
+    new PutCommand({ TableName: inquiriesTable, Item: item })
   );
 
   return item;
 }
 
+/**
+ * List all inquiries for a specific listing
+ * Uses a Scan with FilterExpression (simple approach — works well at small scale)
+ */
 async function listInquiriesByListingId(listingId) {
-  const result = await db.send(
-    new QueryCommand({
+  const { Items } = await db.send(
+    new ScanCommand({
       TableName: inquiriesTable,
-      IndexName: "listingId-createdAt-index",
-      KeyConditionExpression: "listingId = :listingId",
-      ExpressionAttributeValues: {
-        ":listingId": listingId,
-      },
-      ScanIndexForward: false,
+      FilterExpression: "listingId = :lid",
+      ExpressionAttributeValues: { ":lid": listingId },
     })
   );
-
-  return result.Items || [];
+  return Items || [];
 }
 
-module.exports = {
-  createInquiry,
-  listInquiriesByListingId,
-};
+module.exports = { createInquiry, listInquiriesByListingId };

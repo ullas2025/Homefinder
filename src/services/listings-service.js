@@ -1,105 +1,73 @@
-const { ScanCommand, GetCommand, PutCommand, DeleteCommand } = require("@aws-sdk/lib-dynamodb");
+const { PutCommand, GetCommand, ScanCommand, DeleteCommand } = require("@aws-sdk/lib-dynamodb");
 const { v4: uuidv4 } = require("uuid");
 const db = require("../config/dynamodb");
 const { listingsTable } = require("../config/env");
 
-function normalizeListingInput(payload) {
-  return {
-    title: String(payload.title || "").trim(),
-    type: String(payload.type || "Apartment").trim(),
-    price: Number(payload.price),
-    location: String(payload.location || "").trim(),
-    beds: Number(payload.beds || 0),
-    baths: Number(payload.baths || 0),
-    area: Number(payload.area || 0),
-    status: String(payload.status || "active").trim(),
-    agent: String(payload.agent || "").trim(),
-    agentInit: String(payload.agentInit || "").trim(),
-    desc: String(payload.desc || "").trim(),
-    photos: Array.isArray(payload.photos) ? payload.photos.filter(Boolean) : [],
-  };
-}
-
-function validateListingInput(input) {
-  const requiredFields = ["title", "location", "agent"];
-  const missing = requiredFields.filter((field) => !input[field]);
-
-  if (missing.length) {
-    const error = new Error(`Missing required listing fields: ${missing.join(", ")}`);
-    error.statusCode = 400;
-    throw error;
-  }
-
-  if (Number.isNaN(input.price) || input.price <= 0) {
-    const error = new Error("Listing price must be a positive number");
-    error.statusCode = 400;
-    throw error;
-  }
-}
-
+/**
+ * Fetch all listings from DynamoDB
+ */
 async function listListings() {
-  const result = await db.send(
-    new ScanCommand({
-      TableName: listingsTable,
-    })
+  const { Items } = await db.send(
+    new ScanCommand({ TableName: listingsTable })
   );
-
-  return (result.Items || []).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
+  return Items || [];
 }
 
+/**
+ * Fetch a single listing by its ID
+ */
 async function getListingById(id) {
-  const result = await db.send(
+  const { Item } = await db.send(
     new GetCommand({
       TableName: listingsTable,
-      Key: { id },
+      Key: { listingId: id },
     })
   );
-
-  return result.Item || null;
+  return Item || null;
 }
 
-async function createListing(payload) {
-  const normalized = normalizeListingInput(payload);
-  validateListingInput(normalized);
-
-  const now = new Date().toISOString();
+/**
+ * Create a new listing
+ * Expected body fields: title, description, price, location, type, bedrooms, bathrooms
+ */
+async function createListing(body) {
   const item = {
-    id: uuidv4(),
-    ...normalized,
-    views: Number(payload.views || 0),
-    createdAt: now,
-    updatedAt: now,
+    listingId: uuidv4(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    title: body.title,
+    description: body.description || "",
+    price: body.price,
+    location: body.location || "",
+    type: body.type || "sale",         // "sale" or "rent"
+    bedrooms: body.bedrooms || 0,
+    bathrooms: body.bathrooms || 0,
+    imageUrl: body.imageUrl || "",
+    status: "active",
   };
 
   await db.send(
-    new PutCommand({
-      TableName: listingsTable,
-      Item: item,
-    })
+    new PutCommand({ TableName: listingsTable, Item: item })
   );
 
   return item;
 }
 
+/**
+ * Delete a listing by ID — returns the deleted item or null if not found
+ */
 async function deleteListing(id) {
   const existing = await getListingById(id);
-  if (!existing) {
-    return null;
-  }
+  if (!existing) return null;
 
   await db.send(
     new DeleteCommand({
       TableName: listingsTable,
-      Key: { id },
+      Key: { listingId: id },
     })
   );
 
   return existing;
 }
 
-module.exports = {
-  listListings,
-  getListingById,
-  createListing,
-  deleteListing,
-};
+module.exports = { listListings, getListingById, createListing, deleteListing };

@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HomeFinder — Real Estate Portal</title>
+<title>HomeFinder â€” Real Estate Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    DESIGN TOKENS
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 :root {
   --sand:#f5efe6; --sand-dark:#ede4d7; --stone:#c9b99a;
   --espresso:#2c1a0e; --bark:#5c3d1e; --rust:#c0622a;
@@ -22,15 +22,15 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--sand);color:var(--ink);min-height:100vh;}
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PAGE / VIEW SYSTEM
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .page{display:none;}
 .page.active{display:block;}
 
-/* ══════════════════════════════════════
-   ── LOGIN PAGE ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ LOGIN PAGE â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #page-login{
   min-height:100vh;
   display:none;
@@ -143,9 +143,9 @@ body{font-family:'Outfit',sans-serif;background:var(--sand);color:var(--ink);min
 }
 .login-error.show{display:block;}
 
-/* ══════════════════════════════════════
-   ── SHARED NAV ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ SHARED NAV â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 nav{
   position:sticky;top:0;z-index:200;
   background:rgba(253,250,246,0.94);
@@ -194,9 +194,9 @@ nav{
   margin-left:2px;vertical-align:middle;
 }
 
-/* ══════════════════════════════════════
-   ── BUYER: HERO ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ BUYER: HERO â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .hero{
   background:linear-gradient(135deg,var(--espresso) 0%,var(--bark) 60%,#7a4a28 100%);
   padding:5rem 2.5rem 4rem;text-align:center;position:relative;overflow:hidden;
@@ -310,9 +310,9 @@ nav{
 .fav-empty-icon{font-size:4rem;margin-bottom:1rem;opacity:0.4;}
 .fav-empty h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:0.5rem;color:var(--bark);}
 
-/* ══════════════════════════════════════
-   ── AGENT DASHBOARD ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ AGENT DASHBOARD â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .agent-layout{max-width:1000px;margin:0 auto;padding:2.5rem 2rem;}
 .agent-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;}
 .agent-header h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--espresso);}
@@ -386,9 +386,9 @@ nav{
 .listing-del{background:none;border:none;cursor:pointer;color:var(--muted);font-size:1rem;padding:0.3rem;transition:color 0.2s;}
 .listing-del:hover{color:var(--rust);}
 
-/* ══════════════════════════════════════
-   ── PROPERTY DETAIL MODAL ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ PROPERTY DETAIL MODAL â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .modal-overlay{
   display:none;position:fixed;inset:0;
   background:rgba(44,26,14,0.65);z-index:300;
@@ -450,9 +450,9 @@ nav{
 .modal-cta-secondary{background:var(--sand);color:var(--bark);}
 .modal-cta-secondary:hover{background:var(--sand-dark);}
 
-/* ══════════════════════════════════════
-   ── TOAST ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ TOAST â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .toast{
   position:fixed;bottom:2rem;right:2rem;
   background:var(--espresso);color:var(--white);
@@ -465,9 +465,9 @@ nav{
 .toast.show{display:flex;animation:toastIn 0.3s ease;}
 @keyframes toastIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 
-/* ══════════════════════════════════════
-   ── RESPONSIVE ──
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â”€â”€ RESPONSIVE â”€â”€
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media(max-width:640px){
   nav{padding:0 1.2rem;}
   .hero{padding:3.5rem 1.2rem 3rem;}
@@ -484,24 +484,24 @@ nav{
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      LOGIN PAGE
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div id="page-login" class="page active">
   <div class="login-container">
 
     <div class="login-brand">
       <div class="login-brand-logo">Home<span>Finder</span></div>
-      <div class="login-brand-sub">Real Estate Portal · Bengaluru</div>
+      <div class="login-brand-sub">Real Estate Portal Â· Bengaluru</div>
     </div>
 
     <!-- Role tabs -->
     <div class="role-tabs">
       <button class="role-tab active" data-role="buyer" onclick="switchRole('buyer')">
-        🏠 I'm a Buyer
+        ðŸ  I'm a Buyer
       </button>
       <button class="role-tab" data-role="agent" onclick="switchRole('agent')">
-        🏢 I'm an Agent
+        ðŸ¢ I'm an Agent
       </button>
     </div>
 
@@ -512,7 +512,7 @@ nav{
         <p>Browse verified listings, save favourites, connect with agents.</p>
 
         <div class="login-hint">
-          <strong>Demo credentials —</strong><br>
+          <strong>Demo credentials â€”</strong><br>
           Email: <strong>buyer@homefinder.in</strong> &nbsp;|&nbsp; Password: <strong>buyer123</strong>
         </div>
 
@@ -522,10 +522,10 @@ nav{
         </div>
         <div class="login-field">
           <label class="login-label">Password</label>
-          <input class="login-input" id="buyerPass" type="password" placeholder="••••••••" value="buyer123">
+          <input class="login-input" id="buyerPass" type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" value="buyer123">
         </div>
 
-        <button class="login-btn login-btn-buyer" onclick="doLogin('buyer')">Sign In as Buyer →</button>
+        <button class="login-btn login-btn-buyer" onclick="doLogin('buyer')">Sign In as Buyer â†’</button>
         <div class="login-error" id="buyerError">Invalid email or password. Try the demo credentials above.</div>
       </div>
     </div>
@@ -537,7 +537,7 @@ nav{
         <p>Manage your listings, upload properties, track performance.</p>
 
         <div class="login-hint">
-          <strong>Demo credentials —</strong><br>
+          <strong>Demo credentials â€”</strong><br>
           Email: <strong>priya@homefinder.in</strong> &nbsp;|&nbsp; Password: <strong>agent123</strong>
         </div>
 
@@ -547,10 +547,10 @@ nav{
         </div>
         <div class="login-field">
           <label class="login-label">Password</label>
-          <input class="login-input" id="agentPass" type="password" placeholder="••••••••" value="agent123">
+          <input class="login-input" id="agentPass" type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" value="agent123">
         </div>
 
-        <button class="login-btn login-btn-agent" onclick="doLogin('agent')">Sign In as Agent →</button>
+        <button class="login-btn login-btn-agent" onclick="doLogin('agent')">Sign In as Agent â†’</button>
         <div class="login-error" id="agentError">Invalid credentials. Try the demo credentials above.</div>
       </div>
     </div>
@@ -558,9 +558,9 @@ nav{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      BUYER PAGE
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div id="page-buyer" class="page">
 
   <nav>
@@ -581,19 +581,19 @@ nav{
   <!-- Browse tab -->
   <div id="buyer-tab-browse">
     <div class="hero">
-      <div class="hero-tag">🏡 Over 240 Listings in Your City</div>
+      <div class="hero-tag">ðŸ¡ Over 240 Listings in Your City</div>
       <h1>Find Your <em>Perfect</em><br>Home, Today</h1>
       <p>Browse verified listings, filter by price and location, and save your favourites.</p>
       <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="🔍  Search by location, title…" oninput="filterProps()">
+        <input type="text" id="searchInput" placeholder="ðŸ”  Search by location, titleâ€¦" oninput="filterProps()">
         <div class="sep"></div>
         <select id="priceFilter" onchange="filterProps()">
           <option value="">Any Price</option>
-          <option value="3000000">Under ₹30L</option>
-          <option value="5000000">Under ₹50L</option>
-          <option value="10000000">Under ₹1Cr</option>
-          <option value="30000000">Under ₹3Cr</option>
-          <option value="60000000">Under ₹6Cr</option>
+          <option value="3000000">Under â‚¹30L</option>
+          <option value="5000000">Under â‚¹50L</option>
+          <option value="10000000">Under â‚¹1Cr</option>
+          <option value="30000000">Under â‚¹3Cr</option>
+          <option value="60000000">Under â‚¹6Cr</option>
         </select>
         <div class="sep"></div>
         <select id="typeFilter" onchange="filterProps()">
@@ -635,7 +635,7 @@ nav{
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--espresso);margin-bottom:1.8rem;">Your Saved Properties</h2>
       <div class="prop-grid" id="favGrid"></div>
       <div class="fav-empty" id="favEmpty" style="display:none;">
-        <div class="fav-empty-icon">🤍</div>
+        <div class="fav-empty-icon">ðŸ¤</div>
         <h3>No saved properties yet</h3>
         <p style="font-size:0.9rem;margin-bottom:1.5rem;">Tap the heart on any listing to save it here.</p>
         <button class="nav-btn nav-btn-primary" onclick="showBuyerTab('browse')" style="padding:0.7rem 2rem;font-size:0.95rem;">Browse Listings</button>
@@ -644,9 +644,9 @@ nav{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      AGENT PAGE
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div id="page-agent" class="page">
 
   <nav>
@@ -703,11 +703,11 @@ nav{
           <p style="font-size:0.78rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;">New Property</p>
           <h2>Upload a Listing</h2>
         </div>
-        <button class="nav-btn nav-btn-ghost" onclick="showAgentTab('dash')">← Back to Dashboard</button>
+        <button class="nav-btn nav-btn-ghost" onclick="showAgentTab('dash')">â† Back to Dashboard</button>
       </div>
 
       <div class="upload-form">
-        <h3>📤 Property Details</h3>
+        <h3>ðŸ“¤ Property Details</h3>
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Property Title</label>
@@ -723,7 +723,7 @@ nav{
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Price (₹)</label>
+            <label class="form-label">Price (â‚¹)</label>
             <input class="form-input" id="fPrice" type="number" placeholder="e.g. 8500000">
           </div>
           <div class="form-group">
@@ -751,10 +751,10 @@ nav{
           </div>
           <div class="form-group full">
             <label class="form-label">Description</label>
-            <textarea class="form-textarea" id="fDesc" placeholder="Describe the property — key highlights, nearby amenities, connectivity…"></textarea>
+            <textarea class="form-textarea" id="fDesc" placeholder="Describe the property â€” key highlights, nearby amenities, connectivityâ€¦"></textarea>
           </div>
 
-          <!-- ── PHOTO UPLOAD ── -->
+          <!-- â”€â”€ PHOTO UPLOAD â”€â”€ -->
           <div class="form-group full">
             <label class="form-label">Property Photos (upload real images)</label>
             <div class="photo-zone" id="photoZone"
@@ -762,11 +762,11 @@ nav{
               ondragleave="onDragLeave(event)"
               ondrop="onDrop(event)">
               <input type="file" id="photoInput" accept="image/*" multiple onchange="onFileSelect(event)">
-              <div class="photo-zone-icon">🖼️</div>
+              <div class="photo-zone-icon">ðŸ–¼ï¸</div>
               <div class="photo-zone-text">
                 <strong>Drag & drop photos here, or click to select files</strong>
-                Supports JPG, PNG, WEBP — multiple photos allowed<br>
-                <span style="font-size:0.75rem;color:var(--stone);">Pipeline: Upload → S3 → Lambda thumbnail → RDS key saved</span>
+                Supports JPG, PNG, WEBP â€” multiple photos allowed<br>
+                <span style="font-size:0.75rem;color:var(--stone);">Pipeline: Upload â†’ S3 â†’ Lambda thumbnail â†’ RDS key saved</span>
               </div>
             </div>
 
@@ -778,14 +778,14 @@ nav{
               <div class="progress-bar-wrap">
                 <div class="progress-bar-fill" id="progressFill"></div>
               </div>
-              <div class="progress-text" id="progressText">Uploading…</div>
+              <div class="progress-text" id="progressText">Uploadingâ€¦</div>
             </div>
           </div>
         </div>
 
         <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;">
           <button class="search-btn" style="padding:0.85rem 2.2rem;font-size:0.95rem;border-radius:10px;" onclick="submitListing()">
-            ✅ Publish Listing
+            âœ… Publish Listing
           </button>
           <button class="nav-btn nav-btn-ghost" style="padding:0.85rem 1.5rem;" onclick="resetForm()">Clear Form</button>
         </div>
@@ -794,21 +794,21 @@ nav{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      PROPERTY DETAIL MODAL
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div>
     <div class="modal" id="modal">
-      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+      <button class="modal-close" onclick="closeModalBtn()">âœ•</button>
 
       <!-- Image gallery -->
       <div class="modal-gallery" id="modalGallery">
         <div class="modal-gallery-placeholder" id="modalGalleryPlaceholder"></div>
         <div class="modal-gallery-count" id="modalGalleryCount" style="display:none;"></div>
         <div class="modal-gallery-nav" id="modalGalleryNav" style="display:none;">
-          <button class="mgn-btn" onclick="galleryPrev()">‹</button>
-          <button class="mgn-btn" onclick="galleryNext()">›</button>
+          <button class="mgn-btn" onclick="galleryPrev()">â€¹</button>
+          <button class="mgn-btn" onclick="galleryNext()">â€º</button>
         </div>
       </div>
 
@@ -821,56 +821,74 @@ nav{
           </div>
           <button id="modalFavBtn"
             style="background:var(--sand);border:1.5px solid var(--border);border-radius:10px;padding:0.55rem 1rem;cursor:pointer;font-size:1rem;transition:all 0.2s;white-space:nowrap;"
-            onclick="toggleFavModal()">🤍 Save</button>
+            onclick="toggleFavModal()">ðŸ¤ Save</button>
         </div>
         <div class="modal-specs-row" id="modalSpecs"></div>
         <p class="modal-desc" id="modalDesc"></p>
         <div class="modal-actions">
-          <button class="modal-cta modal-cta-primary">📞 Contact Agent</button>
-          <button class="modal-cta modal-cta-secondary" onclick="closeModalBtn()">← Back</button>
+          <button class="modal-cta modal-cta-primary" onclick="contactAgent()">ðŸ“ž Contact Agent</button>
+          <button class="modal-cta modal-cta-secondary" onclick="closeModalBtn()">â† Back</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── TOAST ── -->
+<!-- â”€â”€ TOAST â”€â”€ -->
 <div class="toast" id="toast">
-  <span id="toastIcon">✅</span>
+  <span id="toastIcon">âœ…</span>
   <span id="toastMsg"></span>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      JAVASCRIPT
-══════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <script>
-// ── AUTH ──
+// AUTH
 const USERS = {
   buyer: { email:'buyer@homefinder.in', pass:'buyer123', name:'Arjun Kumar', initials:'AK' },
   agent: { email:'priya@homefinder.in', pass:'agent123', name:'Priya Sharma', initials:'PS' },
 };
+const API_BASE = '/api';
+const EMOJIS = ['🏠','🏡','🏢','🌇','🏘️','🏰'];
+
 let currentRole = null;
 let loginRole = 'buyer';
+let properties = [];
+let savedIds = new Set();
+let listingsLoaded = false;
+let currentModalId = null;
+let galleryPhotos = [];
+let galleryIdx = 0;
+let agentPhotos = [];
+let toastTimer;
 
 function switchRole(role) {
   loginRole = role;
-  document.querySelectorAll('.role-tab').forEach(t => t.classList.toggle('active', t.dataset.role === role));
+  document.querySelectorAll('.role-tab').forEach((tab) => tab.classList.toggle('active', tab.dataset.role === role));
   document.getElementById('login-buyer-form').style.display = role === 'buyer' ? 'block' : 'none';
   document.getElementById('login-agent-form').style.display = role === 'agent' ? 'block' : 'none';
 }
 
-function doLogin(role) {
-  const u = USERS[role];
-  const email = document.getElementById(role+'Email').value.trim();
-  const pass  = document.getElementById(role+'Pass').value.trim();
-  const err   = document.getElementById(role+'Error');
+async function doLogin(role) {
+  const user = USERS[role];
+  const email = document.getElementById(role + 'Email').value.trim();
+  const pass = document.getElementById(role + 'Pass').value.trim();
+  const errorEl = document.getElementById(role + 'Error');
 
-  if (email === u.email && pass === u.pass) {
-    err.classList.remove('show');
-    currentRole = role;
+  if (email !== user.email || pass !== user.pass) {
+    errorEl.classList.add('show');
+    return;
+  }
+
+  errorEl.classList.remove('show');
+  currentRole = role;
+
+  try {
+    await loadListings(true);
     showPage(role);
-  } else {
-    err.classList.add('show');
+  } catch (error) {
+    showToast('⚠️', `Could not load listings: ${error.message}`);
   }
 }
 
@@ -879,132 +897,174 @@ function logout() {
   showPage('login');
 }
 
-// ── PAGES ──
 function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page').forEach((page) => page.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
+
   if (name === 'buyer') {
-    const u = USERS.buyer;
-    document.getElementById('buyerName').textContent = u.name.split(' ')[0];
-    document.getElementById('buyerInitials').textContent = u.initials;
+    const user = USERS.buyer;
+    document.getElementById('buyerName').textContent = user.name.split(' ')[0];
+    document.getElementById('buyerInitials').textContent = user.initials;
     filterProps();
   }
+
   if (name === 'agent') {
-    const u = USERS.agent;
-    document.getElementById('agentNavName').textContent = u.name.split(' ')[0];
-    document.getElementById('agentNavInitials').textContent = u.initials;
-    document.getElementById('agentWelcome').textContent = 'Welcome, ' + u.name.split(' ')[0];
+    const user = USERS.agent;
+    document.getElementById('agentNavName').textContent = user.name.split(' ')[0];
+    document.getElementById('agentNavInitials').textContent = user.initials;
+    document.getElementById('agentWelcome').textContent = 'Welcome, ' + user.name.split(' ')[0];
     renderAgentDash();
   }
 }
 
-// ── BUYER TABS ──
 function showBuyerTab(tab) {
   document.getElementById('buyer-tab-browse').style.display = tab === 'browse' ? 'block' : 'none';
-  document.getElementById('buyer-tab-favs').style.display   = tab === 'favs'   ? 'block' : 'none';
+  document.getElementById('buyer-tab-favs').style.display = tab === 'favs' ? 'block' : 'none';
   if (tab === 'favs') renderFavs();
   if (tab === 'browse') filterProps();
 }
 
-// ── AGENT TABS ──
 function showAgentTab(tab) {
-  document.getElementById('agent-tab-dash').style.display   = tab === 'dash'   ? 'block' : 'none';
+  document.getElementById('agent-tab-dash').style.display = tab === 'dash' ? 'block' : 'none';
   document.getElementById('agent-tab-upload').style.display = tab === 'upload' ? 'block' : 'none';
   if (tab === 'dash') renderAgentDash();
 }
 
-// ── DATA ──
-const EMOJIS = ['🏠','🏡','🏢','🌇','🏘️','🏰'];
-let properties = [
-  { id:1, title:'Spacious 3BHK with Garden View', type:'Apartment', price:8500000, location:'Koramangala, Bengaluru', beds:3, baths:2, area:1450, status:'active', agent:'Priya Sharma', agentInit:'PS', views:238, desc:'A beautifully designed 3BHK apartment with a private garden view on the 4th floor. Features modular kitchen, 24/7 security, covered parking, and proximity to top schools and IT parks.', emoji:'🏠', photos:[] },
-  { id:2, title:'Luxury Villa with Private Pool', type:'Villa', price:32000000, location:'Whitefield, Bengaluru', beds:5, baths:4, area:4200, status:'active', agent:'Rahul Kapoor', agentInit:'RK', views:512, desc:'Stunning luxury villa in a gated community. Boasts private pool, landscaped garden, home theatre, and smart home automation throughout.', emoji:'🏡', photos:[] },
-  { id:3, title:'Modern Studio near Tech Hub', type:'Studio', price:3200000, location:'HSR Layout, Bengaluru', beds:1, baths:1, area:480, status:'active', agent:'Anika Mehta', agentInit:'AM', views:89, desc:'Compact and modern studio apartment ideal for young professionals. Walking distance from major tech parks. Amenities include gym, co-working lounge, and rooftop terrace.', emoji:'🏢', photos:[] },
-  { id:4, title:'Sky Penthouse with City Panorama', type:'Penthouse', price:55000000, location:'Indiranagar, Bengaluru', beds:4, baths:3, area:3600, status:'active', agent:'Vikram Bose', agentInit:'VB', views:341, desc:'Exclusive penthouse on the 28th floor offering 360° panoramic city views. Private terrace, jacuzzi, wine cellar, and dedicated butler service.', emoji:'🌇', photos:[] },
-  { id:5, title:'Cosy 2BHK Near Lake', type:'Apartment', price:5800000, location:'Bellandur, Bengaluru', beds:2, baths:2, area:1100, status:'active', agent:'Priya Sharma', agentInit:'PS', views:173, desc:'Peaceful 2BHK apartment facing the lake. Freshly painted with new flooring. Community amenities include walking track, swimming pool, and kids play area.', emoji:'🏘️', photos:[] },
-  { id:6, title:'Heritage Villa on 1 Acre', type:'Villa', price:78000000, location:'Sadashivanagar, Bengaluru', beds:6, baths:5, area:7800, status:'active', agent:'Jai Patel', agentInit:'JP', views:624, desc:'Rare colonial heritage villa on one full acre. Original teak woodwork, expansive lawns, staff quarters, and private driveway.', emoji:'🏰', photos:[] },
-];
-let savedIds = new Set();
+function getEmojiForListing(listing) {
+  const source = `${listing.type || ''}${listing.title || ''}`;
+  let hash = 0;
+  for (let i = 0; i < source.length; i++) {
+    hash = (hash + source.charCodeAt(i)) % EMOJIS.length;
+  }
+  return EMOJIS[hash];
+}
 
-// ── FORMAT ──
+function normalizeListing(listing) {
+  return {
+    ...listing,
+    id: String(listing.id),
+    price: Number(listing.price || 0),
+    beds: Number(listing.beds || 0),
+    baths: Number(listing.baths || 0),
+    area: Number(listing.area || 0),
+    views: Number(listing.views || 0),
+    photos: Array.isArray(listing.photos) ? listing.photos : [],
+    emoji: getEmojiForListing(listing),
+  };
+}
+
+async function apiRequest(path, options = {}) {
+  const response = await fetch(`${API_BASE}${path}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers || {}),
+    },
+    ...options,
+  });
+
+  let payload = null;
+  try {
+    payload = await response.json();
+  } catch (error) {
+    payload = null;
+  }
+
+  if (!response.ok) {
+    const message = payload && payload.error ? payload.error : `Request failed with status ${response.status}`;
+    throw new Error(message);
+  }
+
+  return payload;
+}
+
+async function loadListings(force = false) {
+  if (listingsLoaded && !force) {
+    return properties;
+  }
+
+  const payload = await apiRequest('/listings');
+  properties = (payload.data || []).map(normalizeListing);
+  listingsLoaded = true;
+  return properties;
+}
+
 function fmt(n) {
-  if (n >= 10000000) return '₹' + (n/10000000).toFixed(1) + ' Cr';
-  if (n >= 100000)   return '₹' + (n/100000).toFixed(1) + ' L';
+  if (n >= 10000000) return '₹' + (n / 10000000).toFixed(1) + ' Cr';
+  if (n >= 100000) return '₹' + (n / 100000).toFixed(1) + ' L';
   return '₹' + n.toLocaleString();
 }
 
-// ── RENDER CARD ──
-function renderCard(p, container) {
-  const isSaved = savedIds.has(p.id);
+function renderCard(property, container) {
+  const isSaved = savedIds.has(property.id);
   const card = document.createElement('div');
   card.className = 'prop-card';
 
-  const imgHtml = (p.photos && p.photos.length > 0)
-    ? `<img src="${p.photos[0]}" alt="${p.title}">`
-    : `<div class="prop-img-placeholder">${p.emoji}</div>`;
+  const imgHtml = property.photos.length
+    ? `<img src="${property.photos[0]}" alt="${property.title}">`
+    : `<div class="prop-img-placeholder">${property.emoji}</div>`;
 
   card.innerHTML = `
     <div class="prop-img-wrap">
       ${imgHtml}
-      <div class="prop-badge">${p.type}</div>
-      <button class="prop-fav-btn ${isSaved?'saved':''}" data-id="${p.id}" onclick="toggleFav(event,${p.id})">
-        ${isSaved ? '❤️' : '🤍'}
-      </button>
+      <div class="prop-badge">${property.type}</div>
+      <button class="prop-fav-btn ${isSaved ? 'saved' : ''}" data-id="${property.id}">${isSaved ? '❤️' : '🤍'}</button>
     </div>
-    <div class="prop-body" onclick="openModal(${p.id})">
-      <div class="prop-price">${fmt(p.price)}</div>
-      <div class="prop-title">${p.title}</div>
-      <div class="prop-loc">📍 ${p.location}</div>
+    <div class="prop-body">
+      <div class="prop-price">${fmt(property.price)}</div>
+      <div class="prop-title">${property.title}</div>
+      <div class="prop-loc">📍 ${property.location}</div>
       <div class="prop-specs">
-        <span>🛏 ${p.beds} Beds</span>
-        <span>🚿 ${p.baths} Baths</span>
-        <span>📐 ${p.area.toLocaleString()} sqft</span>
+        <span>🛏 ${property.beds} Beds</span>
+        <span>🚿 ${property.baths} Baths</span>
+        <span>📐 ${property.area.toLocaleString()} sqft</span>
       </div>
       <div class="prop-agent">
-        <div class="agent-avatar">${p.agentInit}</div>
-        ${p.agent} · 👁 ${p.views}
+        <div class="agent-avatar">${property.agentInit}</div>
+        ${property.agent} · 👁 ${property.views}
       </div>
     </div>
   `;
-  card.querySelector('.prop-img-wrap').addEventListener('click', () => openModal(p.id));
+
+  card.querySelector('.prop-fav-btn').addEventListener('click', (event) => toggleFav(event, property.id));
+  card.querySelector('.prop-img-wrap').addEventListener('click', () => openModal(property.id));
+  card.querySelector('.prop-body').addEventListener('click', () => openModal(property.id));
   container.appendChild(card);
 }
 
-// ── FILTER ──
 function filterProps() {
-  const q = (document.getElementById('searchInput').value||'').toLowerCase();
-  const maxPrice = parseInt(document.getElementById('priceFilter').value)||Infinity;
+  const q = (document.getElementById('searchInput').value || '').toLowerCase();
+  const maxPrice = parseInt(document.getElementById('priceFilter').value, 10) || Infinity;
   const typeF = document.getElementById('typeFilter').value;
 
-  const filtered = properties.filter(p =>
-    p.status === 'active' &&
-    (p.title.toLowerCase().includes(q) || p.location.toLowerCase().includes(q)) &&
-    p.price <= maxPrice &&
-    (typeF === '' || p.type === typeF)
+  const filtered = properties.filter((property) =>
+    property.status === 'active' &&
+    (property.title.toLowerCase().includes(q) || property.location.toLowerCase().includes(q)) &&
+    property.price <= maxPrice &&
+    (typeF === '' || property.type === typeF)
   );
 
   const grid = document.getElementById('propGrid');
   grid.innerHTML = '';
-  filtered.forEach(p => renderCard(p, grid));
+  filtered.forEach((property) => renderCard(property, grid));
   document.getElementById('resultCount').textContent = filtered.length;
-  document.getElementById('statListings').textContent = properties.filter(p=>p.status==='active').length;
+  document.getElementById('statListings').textContent = properties.filter((property) => property.status === 'active').length;
   updateFavCount();
 }
 
 function setTypeFilter(type) {
   document.getElementById('typeFilter').value = type;
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.type === type));
+  document.querySelectorAll('.filter-chip').forEach((chip) => chip.classList.toggle('active', chip.dataset.type === type));
   filterProps();
 }
 
-// ── FAVOURITES ──
-function toggleFav(e, id) {
-  e.stopPropagation();
+function toggleFav(event, id) {
+  event.stopPropagation();
   if (savedIds.has(id)) {
     savedIds.delete(id);
-    showToast('❌','Removed from saved');
+    showToast('❌', 'Removed from saved');
   } else {
     savedIds.add(id);
-    showToast('❤️','Property saved!');
+    showToast('❤️', 'Property saved!');
   }
   updateFavCount();
   filterProps();
@@ -1015,118 +1075,121 @@ function toggleFavModal() {
   if (savedIds.has(currentModalId)) {
     savedIds.delete(currentModalId);
     document.getElementById('modalFavBtn').textContent = '🤍 Save';
-    showToast('❌','Removed from saved');
+    showToast('❌', 'Removed from saved');
   } else {
     savedIds.add(currentModalId);
     document.getElementById('modalFavBtn').textContent = '❤️ Saved';
-    showToast('❤️','Property saved!');
+    showToast('❤️', 'Property saved!');
   }
   updateFavCount();
   filterProps();
 }
 
 function updateFavCount() {
-  const n = savedIds.size;
-  document.getElementById('favCount').textContent = n;
-  document.getElementById('statSaved').textContent = n;
+  const count = savedIds.size;
+  document.getElementById('favCount').textContent = count;
+  document.getElementById('statSaved').textContent = count;
 }
 
 function renderFavs() {
   const grid = document.getElementById('favGrid');
   const empty = document.getElementById('favEmpty');
   grid.innerHTML = '';
-  if (savedIds.size === 0) { empty.style.display='block'; grid.style.display='none'; return; }
-  empty.style.display='none'; grid.style.display='grid';
-  properties.filter(p=>savedIds.has(p.id)).forEach(p=>renderCard(p,grid));
+
+  if (savedIds.size === 0) {
+    empty.style.display = 'block';
+    grid.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.style.display = 'grid';
+  properties.filter((property) => savedIds.has(property.id)).forEach((property) => renderCard(property, grid));
 }
 
-// ── MODAL + GALLERY ──
-let currentModalId = null;
-let galleryPhotos = [];
-let galleryIdx = 0;
-
 function openModal(id) {
-  const p = properties.find(x=>x.id===id);
-  if (!p) return;
-  currentModalId = id;
-  galleryPhotos = (p.photos && p.photos.length) ? p.photos : [];
-  galleryIdx = 0;
+  const property = properties.find((item) => item.id === id);
+  if (!property) return;
 
+  currentModalId = id;
+  galleryPhotos = property.photos;
+  galleryIdx = 0;
   renderGallery();
 
-  document.getElementById('modalPrice').textContent = fmt(p.price);
-  document.getElementById('modalTitle').textContent = p.title;
-  document.getElementById('modalLoc').textContent = '📍 ' + p.location;
+  document.getElementById('modalPrice').textContent = fmt(property.price);
+  document.getElementById('modalTitle').textContent = property.title;
+  document.getElementById('modalLoc').textContent = '📍 ' + property.location;
   document.getElementById('modalSpecs').innerHTML = `
-    <div class="modal-spec"><div class="modal-spec-val">${p.beds}</div><div class="modal-spec-lbl">Bedrooms</div></div>
-    <div class="modal-spec"><div class="modal-spec-val">${p.baths}</div><div class="modal-spec-lbl">Bathrooms</div></div>
-    <div class="modal-spec"><div class="modal-spec-val">${p.area.toLocaleString()}</div><div class="modal-spec-lbl">Sq Ft</div></div>
-    <div class="modal-spec"><div class="modal-spec-val">👁 ${p.views}</div><div class="modal-spec-lbl">Views</div></div>
+    <div class="modal-spec"><div class="modal-spec-val">${property.beds}</div><div class="modal-spec-lbl">Bedrooms</div></div>
+    <div class="modal-spec"><div class="modal-spec-val">${property.baths}</div><div class="modal-spec-lbl">Bathrooms</div></div>
+    <div class="modal-spec"><div class="modal-spec-val">${property.area.toLocaleString()}</div><div class="modal-spec-lbl">Sq Ft</div></div>
+    <div class="modal-spec"><div class="modal-spec-val">👁 ${property.views}</div><div class="modal-spec-lbl">Views</div></div>
   `;
-  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalDesc').textContent = property.desc;
   document.getElementById('modalFavBtn').textContent = savedIds.has(id) ? '❤️ Saved' : '🤍 Save';
   document.getElementById('modalOverlay').classList.add('open');
-  p.views++;
 }
 
 function renderGallery() {
-  const g = document.getElementById('modalGallery');
-  const ph = document.getElementById('modalGalleryPlaceholder');
-  const cnt = document.getElementById('modalGalleryCount');
+  const gallery = document.getElementById('modalGallery');
+  const placeholder = document.getElementById('modalGalleryPlaceholder');
+  const count = document.getElementById('modalGalleryCount');
   const nav = document.getElementById('modalGalleryNav');
 
-  // remove old img
-  g.querySelectorAll('img.gallery-img').forEach(i=>i.remove());
+  gallery.querySelectorAll('img.gallery-img').forEach((img) => img.remove());
 
   if (galleryPhotos.length > 0) {
-    ph.style.display = 'none';
+    placeholder.style.display = 'none';
     const img = document.createElement('img');
     img.className = 'gallery-img';
     img.src = galleryPhotos[galleryIdx];
     img.alt = 'Property photo';
     img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;border-radius:20px 20px 0 0;';
-    g.insertBefore(img, ph.nextSibling);
+    gallery.insertBefore(img, placeholder.nextSibling);
 
     if (galleryPhotos.length > 1) {
-      cnt.style.display = 'block';
-      cnt.textContent = (galleryIdx+1) + ' / ' + galleryPhotos.length;
+      count.style.display = 'block';
+      count.textContent = `${galleryIdx + 1} / ${galleryPhotos.length}`;
       nav.style.display = 'flex';
     } else {
-      cnt.style.display = 'none';
+      count.style.display = 'none';
       nav.style.display = 'none';
     }
   } else {
-    const p = properties.find(x=>x.id===currentModalId);
-    ph.textContent = p ? p.emoji : '🏠';
-    ph.style.display = 'flex';
-    cnt.style.display = 'none';
+    const property = properties.find((item) => item.id === currentModalId);
+    placeholder.textContent = property ? property.emoji : '🏠';
+    placeholder.style.display = 'flex';
+    count.style.display = 'none';
     nav.style.display = 'none';
   }
 }
 
 function galleryNext() {
   if (!galleryPhotos.length) return;
-  galleryIdx = (galleryIdx+1) % galleryPhotos.length;
-  renderGallery();
-}
-function galleryPrev() {
-  if (!galleryPhotos.length) return;
-  galleryIdx = (galleryIdx-1+galleryPhotos.length) % galleryPhotos.length;
+  galleryIdx = (galleryIdx + 1) % galleryPhotos.length;
   renderGallery();
 }
 
-function closeModal(e) { if (e.target===document.getElementById('modalOverlay')) closeModalBtn(); }
+function galleryPrev() {
+  if (!galleryPhotos.length) return;
+  galleryIdx = (galleryIdx - 1 + galleryPhotos.length) % galleryPhotos.length;
+  renderGallery();
+}
+
+function closeModal(event) {
+  if (event.target === document.getElementById('modalOverlay')) closeModalBtn();
+}
+
 function closeModalBtn() {
   document.getElementById('modalOverlay').classList.remove('open');
   currentModalId = null;
 }
 
-// ── AGENT DASHBOARD ──
 function renderAgentDash() {
-  const mine = properties.filter(p=>p.agent==='Priya Sharma');
-  document.getElementById('agentStatListings').textContent = mine.filter(p=>p.status==='active').length;
-  document.getElementById('agentStatViews').textContent = mine.reduce((a,p)=>a+p.views,0).toLocaleString();
-  document.getElementById('agentStatSaved').textContent = mine.filter(p=>savedIds.has(p.id)).length;
+  const mine = properties.filter((property) => property.agent === 'Priya Sharma');
+  document.getElementById('agentStatListings').textContent = mine.filter((property) => property.status === 'active').length;
+  document.getElementById('agentStatViews').textContent = mine.reduce((sum, property) => sum + property.views, 0).toLocaleString();
+  document.getElementById('agentStatSaved').textContent = mine.filter((property) => savedIds.has(property.id)).length;
 
   const body = document.getElementById('agentListingsBody');
   body.innerHTML = '';
@@ -1134,56 +1197,79 @@ function renderAgentDash() {
     body.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--muted);font-size:0.9rem;">No listings yet. Click "+ New Listing" above to add one.</div>';
     return;
   }
-  mine.forEach(p => {
+
+  mine.forEach((property) => {
     const row = document.createElement('div');
     row.className = 'listing-row';
-    const thumbHtml = (p.photos && p.photos.length)
-      ? `<img src="${p.photos[0]}" style="width:100%;height:100%;object-fit:cover;">`
-      : p.emoji;
+    const thumbHtml = property.photos.length
+      ? `<img src="${property.photos[0]}" style="width:100%;height:100%;object-fit:cover;">`
+      : property.emoji;
+
     row.innerHTML = `
       <div class="listing-thumb">${thumbHtml}</div>
       <div class="listing-info">
-        <strong>${p.title}</strong>
-        <span>📍 ${p.location} · ${p.beds}bd ${p.baths}ba · ${p.area} sqft</span>
+        <strong>${property.title}</strong>
+        <span>📍 ${property.location} · ${property.beds}bd ${property.baths}ba · ${property.area} sqft</span>
       </div>
-      <div class="listing-price">${fmt(p.price)}</div>
-      <div class="listing-status ${p.status==='active'?'status-active':'status-pending'}">${p.status}</div>
-      <div style="font-size:0.78rem;color:var(--muted);white-space:nowrap;">👁 ${p.views}</div>
-      <button class="listing-del" onclick="deleteListing(${p.id})" title="Delete">🗑</button>
+      <div class="listing-price">${fmt(property.price)}</div>
+      <div class="listing-status ${property.status === 'active' ? 'status-active' : 'status-pending'}">${property.status}</div>
+      <div style="font-size:0.78rem;color:var(--muted);white-space:nowrap;">👁 ${property.views}</div>
+      <button class="listing-del" title="Delete">🗑</button>
     `;
+
+    row.querySelector('.listing-del').addEventListener('click', () => deleteListing(property.id));
     body.appendChild(row);
   });
 }
 
-function deleteListing(id) {
-  properties = properties.filter(p=>p.id!==id);
-  savedIds.delete(id);
-  updateFavCount();
-  renderAgentDash();
-  showToast('🗑️','Listing removed');
+async function deleteListing(id) {
+  try {
+    await apiRequest(`/listings/${id}`, { method: 'DELETE' });
+    properties = properties.filter((property) => property.id !== id);
+    savedIds.delete(id);
+    updateFavCount();
+    renderAgentDash();
+    filterProps();
+    showToast('🗑️', 'Listing removed');
+  } catch (error) {
+    showToast('⚠️', error.message);
+  }
 }
 
-// ── PHOTO UPLOAD ──
-let agentPhotos = [];
+function onDragOver(event) {
+  event.preventDefault();
+  document.getElementById('photoZone').classList.add('dragging');
+}
 
-function onDragOver(e) { e.preventDefault(); document.getElementById('photoZone').classList.add('dragging'); }
-function onDragLeave()  { document.getElementById('photoZone').classList.remove('dragging'); }
-function onDrop(e)      { e.preventDefault(); document.getElementById('photoZone').classList.remove('dragging'); handleFiles(e.dataTransfer.files); }
-function onFileSelect(e){ handleFiles(e.target.files); }
+function onDragLeave() {
+  document.getElementById('photoZone').classList.remove('dragging');
+}
+
+function onDrop(event) {
+  event.preventDefault();
+  document.getElementById('photoZone').classList.remove('dragging');
+  handleFiles(event.dataTransfer.files);
+}
+
+function onFileSelect(event) {
+  handleFiles(event.target.files);
+}
 
 function handleFiles(files) {
-  Array.from(files).forEach(file => {
-    if (!file.type.startsWith('image/')) { showToast('⚠️','Only image files are supported'); return; }
-    readAndSimulateUpload(file);
+  Array.from(files).forEach((file) => {
+    if (!file.type.startsWith('image/')) {
+      showToast('⚠️', 'Only image files are supported');
+      return;
+    }
+    readAndPreviewPhoto(file);
   });
-  // reset file input so same file can be re-added
   document.getElementById('photoInput').value = '';
 }
 
-function readAndSimulateUpload(file) {
+function readAndPreviewPhoto(file) {
   const reader = new FileReader();
-  reader.onload = ev => {
-    const base64 = ev.target.result;
+  reader.onload = (event) => {
+    const base64 = event.target.result;
     simulateUploadPipeline(base64, file.name);
   };
   reader.readAsDataURL(file);
@@ -1197,109 +1283,174 @@ function simulateUploadPipeline(base64, name) {
   fill.style.width = '0%';
 
   const stages = [
-    [15, `Uploading "${name}" to S3 originals bucket…`],
-    [40, 'S3 event notification → invoking Lambda…'],
-    [65, 'Lambda: generating web-optimised thumbnail…'],
-    [85, 'Writing thumbnail S3 key → RDS listing record…'],
-    [100,'Pre-signed URL generated ✓  Photo ready!'],
+    [15, `Preparing "${name}" for listing upload...`],
+    [45, 'Generating in-browser preview...'],
+    [75, 'Attaching photo to draft listing...'],
+    [100, 'Photo ready!'],
   ];
 
-  let i = 0;
+  let index = 0;
   function run() {
-    if (i >= stages.length) {
-      // Add to agentPhotos and show thumb
+    if (index >= stages.length) {
       agentPhotos.push(base64);
       renderPhotoThumbs();
-      showToast('🖼️','Photo processed & thumbnail saved');
-      setTimeout(() => { progress.classList.remove('show'); fill.style.width='0%'; }, 1400);
+      showToast('🖼️', 'Photo ready for publish');
+      setTimeout(() => {
+        progress.classList.remove('show');
+        fill.style.width = '0%';
+      }, 1000);
       return;
     }
-    const [pct, msg] = stages[i++];
+
+    const [pct, message] = stages[index++];
     fill.style.width = pct + '%';
-    text.textContent = msg;
-    setTimeout(run, 550);
+    text.textContent = message;
+    setTimeout(run, 250);
   }
+
   run();
 }
 
 function renderPhotoThumbs() {
   const preview = document.getElementById('photoPreview');
   preview.innerHTML = '';
-  agentPhotos.forEach((src, i) => {
+  agentPhotos.forEach((src, index) => {
     const div = document.createElement('div');
     div.className = 'photo-thumb';
     div.innerHTML = `
-      <img src="${src}" alt="Photo ${i+1}">
-      <button class="photo-thumb-del" onclick="removeThumb(${i})" title="Remove">✕</button>
+      <img src="${src}" alt="Photo ${index + 1}">
+      <button class="photo-thumb-del" title="Remove">✕</button>
     `;
+    div.querySelector('.photo-thumb-del').addEventListener('click', () => removeThumb(index));
     preview.appendChild(div);
   });
 }
 
-function removeThumb(idx) {
-  agentPhotos.splice(idx, 1);
+function removeThumb(index) {
+  agentPhotos.splice(index, 1);
   renderPhotoThumbs();
-  showToast('🗑️','Photo removed');
+  showToast('🗑️', 'Photo removed');
 }
 
-// ── SUBMIT LISTING ──
-function submitListing() {
-  const title    = document.getElementById('fTitle').value.trim();
-  const type     = document.getElementById('fType').value;
-  const price    = parseFloat(document.getElementById('fPrice').value);
+async function submitListing() {
+  const title = document.getElementById('fTitle').value.trim();
+  const type = document.getElementById('fType').value;
+  const price = parseFloat(document.getElementById('fPrice').value);
   const location = document.getElementById('fLocation').value.trim();
-  const beds     = parseInt(document.getElementById('fBeds').value)||1;
-  const baths    = parseInt(document.getElementById('fBaths').value)||1;
-  const area     = parseInt(document.getElementById('fArea').value)||0;
-  const status   = document.getElementById('fStatus').value;
-  const desc     = document.getElementById('fDesc').value.trim();
+  const beds = parseInt(document.getElementById('fBeds').value, 10) || 1;
+  const baths = parseInt(document.getElementById('fBaths').value, 10) || 1;
+  const area = parseInt(document.getElementById('fArea').value, 10) || 0;
+  const status = document.getElementById('fStatus').value;
+  const desc = document.getElementById('fDesc').value.trim();
 
-  if (!title)    { showToast('⚠️','Please enter a property title'); return; }
-  if (!price||isNaN(price)) { showToast('⚠️','Please enter a valid price'); return; }
-  if (!location) { showToast('⚠️','Please enter a location'); return; }
+  if (!title) { showToast('⚠️', 'Please enter a property title'); return; }
+  if (!price || Number.isNaN(price)) { showToast('⚠️', 'Please enter a valid price'); return; }
+  if (!location) { showToast('⚠️', 'Please enter a location'); return; }
 
   const newProp = {
-    id:Date.now(), title, type, price, location, beds, baths, area, status,
-    agent:'Priya Sharma', agentInit:'PS', views:0,
-    desc: desc||'No description provided.',
-    emoji: EMOJIS[Math.floor(Math.random()*EMOJIS.length)],
+    title,
+    type,
+    price,
+    location,
+    beds,
+    baths,
+    area,
+    status,
+    agent: 'Priya Sharma',
+    agentInit: 'PS',
+    desc: desc || 'No description provided.',
     photos: [...agentPhotos],
   };
-  properties.unshift(newProp);
 
-  resetForm();
-  showToast('✅','Listing published! Visible to buyers now.');
-  showAgentTab('dash');
+  try {
+    const payload = await apiRequest('/listings', {
+      method: 'POST',
+      body: JSON.stringify(newProp),
+    });
+    properties.unshift(normalizeListing(payload.data));
+    resetForm();
+    showToast('✅', 'Listing published! Visible to buyers now.');
+    showAgentTab('dash');
+    filterProps();
+  } catch (error) {
+    showToast('⚠️', error.message);
+  }
 }
 
 function resetForm() {
-  ['fTitle','fPrice','fLocation','fBeds','fBaths','fArea','fDesc'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('fType').value='Apartment';
-  document.getElementById('fStatus').value='active';
-  document.getElementById('photoPreview').innerHTML='';
-  agentPhotos=[];
+  ['fTitle','fPrice','fLocation','fBeds','fBaths','fArea','fDesc'].forEach((id) => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('fType').value = 'Apartment';
+  document.getElementById('fStatus').value = 'active';
+  document.getElementById('photoPreview').innerHTML = '';
   document.getElementById('uploadProgress').classList.remove('show');
+  agentPhotos = [];
 }
 
-// ── TOAST ──
-let toastTimer;
+async function contactAgent() {
+  if (!currentModalId) return;
+
+  const listing = properties.find((item) => item.id === currentModalId);
+  if (!listing) {
+    showToast('⚠️', 'Listing not found');
+    return;
+  }
+
+  const buyer = USERS.buyer;
+  const phone = window.prompt('Enter your phone number so the agent can reach you:', '+91-');
+  if (phone === null) return;
+
+  const message = window.prompt(
+    `Message for ${listing.agent} about "${listing.title}":`,
+    `Hi, I would like to know more about ${listing.title}.`
+  );
+  if (message === null) return;
+
+  try {
+    await apiRequest('/inquiries', {
+      method: 'POST',
+      body: JSON.stringify({
+        listingId: listing.id,
+        name: buyer.name,
+        email: buyer.email,
+        phone: phone.trim(),
+        message: message.trim(),
+      }),
+    });
+    showToast('✅', 'Inquiry sent to the agent');
+  } catch (error) {
+    showToast('⚠️', error.message);
+  }
+}
+
 function showToast(icon, msg) {
-  const t=document.getElementById('toast');
-  document.getElementById('toastIcon').textContent=icon;
-  document.getElementById('toastMsg').textContent=msg;
-  t.classList.add('show');
+  const toast = document.getElementById('toast');
+  document.getElementById('toastIcon').textContent = icon;
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
 }
 
-// ── KEYBOARD ──
-document.addEventListener('keydown', e => {
-  if (e.key==='Escape') closeModalBtn();
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeModalBtn();
   if (document.getElementById('modalOverlay').classList.contains('open')) {
-    if (e.key==='ArrowRight') galleryNext();
-    if (e.key==='ArrowLeft')  galleryPrev();
+    if (event.key === 'ArrowRight') galleryNext();
+    if (event.key === 'ArrowLeft') galleryPrev();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+  switchRole(loginRole);
+  try {
+    await loadListings(true);
+    filterProps();
+  } catch (error) {
+    showToast('⚠️', `Could not load listings: ${error.message}`);
   }
 });
 </script>
 </body>
 </html>
+

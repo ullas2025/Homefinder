@@ -1,7 +1,9 @@
-function asyncHandler(fn) {
-  return function wrappedHandler(req, res, next) {
-    Promise.resolve(fn(req, res, next)).catch(next);
-  };
-}
+/**
+ * Wraps async route handlers so errors are forwarded to Express error handler
+ * instead of crashing the server or hanging the request.
+ */
+const asyncHandler = (fn) => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
 
 module.exports = asyncHandler;
